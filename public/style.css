@@ -6,16 +6,43 @@ body {
 }
 
 .HomePageButton {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin: 10px 0;
   color: azure;
   background-color: #5dbea3;
   height: 50px;
   width: 150px;
+  justify-content: center;
+  align-items: center;
 }
 
 #StartPageWelcome {
   color: azure;
   font-size: 40px;
   font-weight: 500;
+}
+
+.MainPageContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: start;
+}
+
+.mainPageButton {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+  color: azure;
+  background-color: #5dbea3;
+  height: 40px;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+#currentDate {
+  color: azure;
 }
