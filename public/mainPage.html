@@ -8,20 +8,31 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <h1 id="currentDate"></h1>
-    <div class="MainPageContainer">
-      <button
-        class="mainPageButton"
-        onclick="window.location.href='mainPage.html'"
-      >
-        リスト追加
-      </button>
-      <button
-        class="mainPageButton"
-        onclick="window.location.href='stockPage.html'"
-      >
-        プロセス表示
-      </button>
+    <div class="BigContainer">
+      <h1 id="currentDate"></h1>
+      <div class="todo-container">
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="新しいタスクを入れてください："
+        />
+        <button class="mainPageButton2" onclick="addTask()">タスク追加</button>
+      </div>
+      <ul id="todoList"></ul>
+      <div class="UserHelpContainer">
+        <button class="mainPageButton3" onclick="">保存</button>
+        <button class="mainPageButton3" onclick="window.location.href='/'">
+          戻る
+        </button>
+      </div>
+      <div class="MainPageContainer">
+        <button
+          class="mainPageButton"
+          onclick="window.location.href='display.html'"
+        >
+          プロセス表示
+        </button>
+      </div>
     </div>
   </body>
 </html>
