@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     currentDateElement.textContent = formattedDate;
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const currentDateElement = document.getElementById("currentDate");
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('ja-JP', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    currentDateElement.textContent = formattedDate;
+});
+
 document.addEventListener('DOMContentLoaded', loadTasks);
 
 function addTask() {
@@ -21,6 +32,7 @@ function addTask() {
 
     saveTasks();
     taskInput.value = '';
+    saveGridState();
 }
 
 function createTaskElement(taskText, isCompleted) {
@@ -47,35 +59,15 @@ function handleTaskCompletion(event) {
             changeRandomBlockColor();
         }
     } else {
-        taskItem.classList.remove('completed');
     }
     saveTasks();
+    saveGridState();
 }
 
 function changeRandomBlockColor() {
-    const blocks = document.querySelectorAll('.grid-item');
-    const darkBlueBlocks = Array.from(blocks).filter(block => !block.classList.contains('white'));
-    if (darkBlueBlocks.length === 0) return;
-
-    const randomIndex = Math.floor(Math.random() * darkBlueBlocks.length);
-    darkBlueBlocks[randomIndex].classList.add('white');
-}
-
-async function saveTasks() {
-    const tasks = [];
-    document.querySelectorAll('#todoList li').forEach(taskItem => {
-        const taskText = taskItem.textContent;
-        const isCompleted = taskItem.querySelector('input').checked;
-        tasks.push({ text: taskText, completed: isCompleted });
-    });
-    console.log('Saving tasks:', tasks);
-    await fetch('/saveTasks', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(tasks)
-    });
+    const starBlocks = document.querySelectorAll('.grid-item[data-star="true"]:not(.white)');
+    const randomBlock = starBlocks[Math.floor(Math.random() * starBlocks.length)];
+    randomBlock.classList.add('white');
 }
 
 async function loadTasks() {
@@ -86,9 +78,41 @@ async function loadTasks() {
         const taskItem = createTaskElement(task.text, task.completed);
         document.getElementById('todoList').appendChild(taskItem);
     });
+
+    loadGridState();
+    updateStarBlocks();
 }
 
-function getCurrentDate() {
-    const date = new Date();
-    return date.toISOString().split('T')[0];
+function loadGridState() {
+    const gridState = JSON.parse(localStorage.getItem('gridState')) || [];
+    gridState.forEach(state => {
+        const item = document.querySelector(`.grid-item[data-id="${state.id}"]`);
+        if (item) {
+            item.innerHTML = state.content;
+        }
+    });
+}
+
+function updateStarBlocks() {
+    document.querySelectorAll('.grid-item[data-star="true"]').forEach(item => {
+        item.style.backgroundColor = 'yellow'; // Change to desired color or style
+    });
+}
+
+function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll('#todoList li').forEach(taskItem => {
+        const taskText = taskItem.textContent;
+        const isCompleted = taskItem.querySelector('input').checked;
+        tasks.push({ text: taskText, completed: isCompleted });
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function saveGridState() {
+    const gridState = [];
+    document.querySelectorAll('.grid-item[data-id]').forEach(item => {
+        gridState.push({ id: item.getAttribute('data-id'), content: item.innerHTML });
+    });
+    localStorage.setItem('gridState', JSON.stringify(gridState));
 }
