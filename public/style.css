@@ -5,7 +5,8 @@ body {
   background-color: rgb(6, 6, 28);
 }
 
-.BigContainer {
+.BigContainer,
+#DatesContainer {
   width: 100%;
   max-width: 380px;
   background-color: rgb(4, 4, 56);
