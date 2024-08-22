@@ -59,16 +59,15 @@ function handleTaskCompletion(event) {
             changeRandomBlockColor();
         }
     } else {
-        taskItem.classList.remove('completed');
     }
     saveTasks();
     saveGridState();
 }
 
 function changeRandomBlockColor() {
-    const starBlocks = document.querySelectorAll('.grid-item[data-star="true"]');
+    const starBlocks = document.querySelectorAll('.grid-item[data-star="true"]:not(.white)');
     const randomBlock = starBlocks[Math.floor(Math.random() * starBlocks.length)];
-    randomBlock.style.backgroundColor = 'yellow'; // Change to desired color or style
+    randomBlock.classList.add('white');
 }
 
 async function loadTasks() {
