@@ -34,23 +34,7 @@ body {
   font-weight: 500;
 }
 
-.MainPageContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-}
-
-.mainPageButton {
-  margin: 10px 0;
-  color: azure;
-  background-color: #5dbea3;
-  height: 40px;
-  width: 200px;
-}
-
-.mainPageButton2,
-.mainPageButton3 {
+.mainPageButton2 {
   display: flex;
   flex-direction: row;
   margin: 10px 0;
@@ -58,6 +42,18 @@ body {
   background-color: #5dbea3;
   height: 40px;
   width: 100px;
+  justify-content: center;
+  align-items: center;
+}
+.mainPageButton3 {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+  color: azure;
+  background-color: #5dbea3;
+  gap: 10px;
+  height: 40px;
+  width: 160px;
   justify-content: center;
   align-items: center;
 }
