@@ -7,8 +7,8 @@ body {
 
 .BigContainer {
   width: 100%;
-  max-width: 420px;
-  background-color: darkblue;
+  max-width: 380px;
+  background-color: rgb(4, 4, 56);
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
   border-radius: 10px;
@@ -37,21 +37,16 @@ body {
 .MainPageContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  align-items: start;
+  justify-content: start;
+  align-items: center;
 }
 
 .mainPageButton {
-  display: flex;
-  flex-direction: row;
   margin: 10px 0;
   color: azure;
   background-color: #5dbea3;
   height: 40px;
   width: 200px;
-  justify-content: center;
-  align-items: center;
 }
 
 .mainPageButton2,
@@ -62,7 +57,7 @@ body {
   color: azure;
   background-color: #5dbea3;
   height: 40px;
-  width: 90px;
+  width: 100px;
   justify-content: center;
   align-items: center;
 }
@@ -71,6 +66,8 @@ body {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .todo-container {
@@ -82,11 +79,17 @@ body {
   justify-content: center;
 }
 
-#task-input {
-  width: 70px;
+#taskInput {
+  width: 260px;
+  height: 30px;
+  max-height: 60px;
 }
 #currentDate {
-  color: azure;
+  display: flex;
+  flex-direction: column;
+  color: #fff5eee8;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
@@ -97,6 +100,8 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 2px;
+  max-width: 320px;
+  padding-left: 30px;
 }
 
 .grid-item {
@@ -106,7 +111,7 @@ body {
 }
 
 .grid-item.white {
-  background-color: white;
+  background-color: azure;
 }
 
 #todoList {
