@@ -17,7 +17,8 @@ body {
   justify-content: center;
 }
 
-.HomePageButton {
+.HomePageButton,
+.stockPageButton {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
@@ -28,9 +29,93 @@ body {
   justify-content: center;
   align-items: center;
 }
+.HomePageButton:hover,
+.stockPageButton:hover {
+  background-color: #4aa88a;
+}
+.stockPageButton2 {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  color: azure;
+  background-color: #8080b3;
+  height: 50px;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+}
 
+.mainPageButton2:hover,
+.mainPageButton3:hover {
+  background-color: #4aa88a;
+}
+
+.stockPageButton2:hover {
+  background-color: #7f7f83;
+}
+h1 {
+  max-height: 40px;
+}
 #StartPageWelcome {
   color: azure;
+  font-size: 42px;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.1em;
+  animation: typing 3s steps(18, end), blink-caret 1s step-end infinite;
+  max-width: 186px;
+  padding-top: 20px;
+  padding-bottom: 18px;
+  line-height: 0.7;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+#StartPageWelcome2 {
+  color: azure;
+  font-size: 42px;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.1em;
+  animation: typing 4s steps(20, end), blink-caret 1s step-end infinite;
+  max-width: 332px;
+  padding-top: 20px;
+  padding-bottom: 18px;
+  line-height: 0.7;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+#StartPageWelcome2 {
+  color: azure;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 40px;
   font-weight: 500;
 }
