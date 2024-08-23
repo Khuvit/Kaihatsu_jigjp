@@ -85,8 +85,8 @@ h1 {
   white-space: nowrap;
   margin: 0 auto;
   letter-spacing: 0.1em;
-  animation: typing 4s steps(20, end), blink-caret 1s step-end infinite;
-  max-width: 332px;
+  animation: typing 3s steps(20, end), blink-caret 1s step-end infinite;
+  max-width: 338px;
   padding-top: 20px;
   padding-bottom: 18px;
   line-height: 0.7;
@@ -200,4 +200,15 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 14px;
   color: azure;
+}
+
+#startImage {
+  display: block;
+  margin: 20px auto;
+  width: 18%;
+  max-width: 40%;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
