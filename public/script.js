@@ -32,14 +32,21 @@ function createTaskElement(taskText, isCompleted) {
     const taskCheckbox = document.createElement('input');
     taskCheckbox.type = 'checkbox';
     taskCheckbox.checked = isCompleted;
-    taskCheckbox.addEventListener('change', handleTaskCompletion);
 
-    if (isCompleted) {
-        taskItem.classList.add('completed');
-    }
+    const taskLabel = document.createElement('span');
+    taskLabel.textContent = taskText;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = '削除';
+    deleteButton.onclick = () => {
+        taskItem.remove();
+        saveTasks();
+    };
 
     taskItem.appendChild(taskCheckbox);
-    taskItem.appendChild(document.createTextNode(taskText));
+    taskItem.appendChild(taskLabel);
+    taskItem.appendChild(deleteButton);
+
     return taskItem;
 }
 
@@ -56,12 +63,10 @@ function handleTaskCompletion(event) {
     saveGridState();
     returnToOriginal();
 }
-
 function saveCurrentDate() {
-    const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in YYYY-MM-DD format
+    const currentDate = new Date().toISOString().split('T')[0]; //UTC time aar yavj baigaa
     localStorage.setItem('currentDate', currentDate);
 }
-
 function checkDateAndClearTasks() {
     const savedDate = localStorage.getItem('currentDate');
     const currentDate = new Date().toISOString().split('T')[0];
@@ -91,11 +96,8 @@ async function loadTasks() {
 
 function loadGridState() {
     try {
-        // Load grid state from local storage
         const gridState = JSON.parse(localStorage.getItem('gridState')) || [];
         console.log('Loaded grid state from local storage:', gridState);
-
-        // Update the DOM with the loaded grid state
         gridState.forEach(state => {
             const item = document.querySelector(`.grid-item[data-id="${state.id}"]`);
             if (item) {
@@ -167,7 +169,7 @@ function checkReturnOriginal() {
 }
 
 function clearTasks() {
-    localStorage.removeItem('tasksByDate'); // Clear tasks from local storage
-    document.getElementById('todoList').innerHTML = ''; // Clear tasks from the DOM
+    localStorage.removeItem('tasksByDate');
+    document.getElementById('todoList').innerHTML = '';
     console.log('Tasks cleared for the new day');
 }
